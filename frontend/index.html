@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Application</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <style>
+        /* Add CSS styles for centering and bolding the resultMessage */
+        #resultMessage {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center; /* Center the text */
+            font-weight: bold;  /* Make the text bold */
+            width: 50%; /* Adjust width as needed */
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Web Application</h1>
+    <form id="dataForm" style="text-align: center;">
+        <input type="text" id="value1" name="value1" placeholder="Enter value 1" required>
+        <input type="text" id="value2" name="value2" placeholder="Enter value 2" required>
+        <button type="submit">Submit</button>
+    </form>
+    
+    <!-- Add the result message container -->
+    <div id="resultMessage"></div>
+</body>
+</html>

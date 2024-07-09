@@ -1,2 +1,2 @@
-# flaskapp-cicd
-flaskapp-cicd
+# app-terraform
+web-app 

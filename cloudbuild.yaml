@@ -1,0 +1,21 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/regal-scholar-423322-h0/flaskapp-cicd/flask-app:$SHORT_SHA', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'us-central1-docker.pkg.dev/regal-scholar-423322-h0/flaskapp-cicd/flask-app:$SHORT_SHA']
+
+
+# Deployment step
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - >
+    gcloud deploy releases create release-$BUILD_ID
+    --delivery-pipeline=flask-app-pipeline
+    --region=us-central1
+    --source=./
+    --images=flask-app=us-central1-docker.pkg.dev/regal-scholar-423322-h0/flaskapp-cicd/flask-app:$SHORT_SHA
+
+options:
+  logging: CLOUD_LOGGING_ONLY

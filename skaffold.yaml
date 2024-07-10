@@ -1,0 +1,20 @@
+apiVersion: skaffold/v2beta16
+kind: Config
+metadata:
+  name: flask-app
+build:
+  artifacts:
+  - image: flask-app
+    context: .
+    docker:
+      dockerfile: Dockerfile
+  tagPolicy:
+    gitCommit: {}
+  local:
+    useBuildkit: false
+deploy:
+  kubectl:
+    manifests:
+    - kubernetes.yaml
+profiles:
+- name: gcb

@@ -1,0 +1,16 @@
+apiVersion: deploy.cloud.google.com/v1beta1
+kind: DeliveryPipeline
+metadata:
+ name: flask-app-pipeline
+description: cicd-demo application 
+serialPipeline:
+ stages:
+ - targetId: prod
+---
+apiVersion: deploy.cloud.google.com/v1beta1
+kind: Target
+metadata:
+ name: prod
+description: prod cluster
+gke:
+ cluster: projects/regal-scholar-423322-h0/locations/us-central1-c/clusters/flaskapp-cluster
